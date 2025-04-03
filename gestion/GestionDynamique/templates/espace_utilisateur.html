@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Espace Utilisateur</h2>
+
+    <!-- Liste des clients et produits achetés -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Produits achetés par client</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Client</th>
+                        <th>Photo</th>
+                        <th>Produits Achetes</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.nom }} {{ client.prenom }}</td>
+                        <td>
+                            {% if client.photo %}
+                                <img src="{{ client.photo.url }}" alt="Photo de {{ client.nom }}" width="50" height="50" class="rounded-circle">
+                            {% else %}
+                                Pas de photo
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% for achat in client.achats.all %}
+                                {% for produit in achat.produits.all %}
+                                    {{ produit.nom }} ({{ produit.prix }}$) <br>
+                                {% endfor %}
+                            {% endfor %}
+                        </td>
+                  
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">Aucun client trouvé.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Liste des vendeurs et leurs clients -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h4>Clients reçus par vendeur</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Vendeur</th>
+                        <th>Logo Entreprise</th>
+                        <th>Clients Reçus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vendeur in vendeurs %}
+                    <tr>
+                        <td>{{ vendeur.nom }} {{ vendeur.prenom }}</td>
+                        <td>
+                            {% if vendeur.logo_entreprise %}
+                                <img src="{{ vendeur.logo_entreprise.url }}" alt="Logo entreprise" width="50" height="50" class="rounded-circle">
+                            {% else %}
+                                Pas de logo
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% for client in vendeur.clients_recu.all %}
+                                {{ client.nom }} {{ client.prenom }} - {{ client.telephone }} <br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center">Aucun vendeur trouvé.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Nombre total de produits achetés par chaque client -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning">
+            <h4>Nombre de produits achetés par client</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Client</th>
+                        <th>Nombre de Produits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.nom }} {{ client.prenom }}</td>
+                        <td>{{ client.achats.all|length }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="text-center">Aucun client trouvé.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
