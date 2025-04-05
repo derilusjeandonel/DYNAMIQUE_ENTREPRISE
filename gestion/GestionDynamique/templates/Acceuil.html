@@ -51,6 +51,10 @@
             background-color: #0056b3;
         }
 
+        .Actif{
+            color: white;
+            border-bottom: #27609e 3px solid;
+        }
         /* Style du texte */
         .hero-title {
             font-size: 3rem;
@@ -77,10 +81,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'home' %}">Accueil</a>
+                    <a class="nav-link Actif" href="{% url 'home' %}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'espace_utilisateur' %}">informations</a>
+                    <a class="nav-link text-white" href="{% url 'espace_utilisateur' %}">informations</a>
                 </li>
             </ul>
         </div>
@@ -105,9 +109,9 @@
         <!-- Produit 1 -->
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card shadow-sm border-light">
-                <img src="../static/images/manfrotto.jpg" class="card-img-top" alt="Produit 1" style="object-fit: cover; height: 250px;">
+                <img src="../static/images/ii.jpg" class="card-img-top" alt="Produit 1" style="object-fit: cover; height: 250px;">
                 <div class="card-body">
-                    <h5 class="card-title">Manfroto</h5>
+                    <h5 class="card-title">Ecran</h5>
                     <p class="card-text">Un produit incroyable qui vous apportera une grande valeur ajoutée.</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-muted">$199.99</span>
@@ -135,9 +139,9 @@
         <!-- Produit 2 -->
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card shadow-sm border-light">
-                <img src="../static/images/manfrotto.jpg" class="card-img-top" alt="Produit 2" style="object-fit: cover; height: 250px;">
+                <img src="../static/images/téléchargement.jpeg" class="card-img-top" alt="Produit 2" style="object-fit: cover; height: 250px;">
                 <div class="card-body">
-                    <h5 class="card-title">Manfroto</h5>
+                    <h5 class="card-title">Souris</h5>
                     <p class="card-text">Un produit de qualité supérieure pour vos besoins quotidiens.</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="text-muted">$29.99</span>

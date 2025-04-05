@@ -6,6 +6,12 @@
     <title>Gestion Dynamique</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        .Actif{
+            color: white;
+            border-bottom: #27609e 3px solid;
+        }
+    </style>
 </head>
 <body>
     
@@ -21,7 +27,7 @@
                         <a class="nav-link active" href="{% url 'Acceuil' %}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'espace_utilisateur' %}">informations</a>
+                        <a class="nav-link Actif" href="{% url 'espace_utilisateur' %}">informations</a>
                     </li>
                 </ul>
             </div>
